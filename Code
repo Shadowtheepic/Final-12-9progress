@@ -251,12 +251,12 @@ while not gameover:
         else: 
             if frameNum>2:
                 frameNum = 0
-    if atk != False:
+    if atk == True:
         ticker2 += 1
         if ticker2%10==0:
             swordNum+=1
         if swordNum > 1:
-            frameNum = 0
+            swordNum = 0
 
  
     # RENDER--------------------------------------------------------------------------------
@@ -284,12 +284,12 @@ while not gameover:
     screen.blit(mahrio, (xpos, ypos), (frameWidth*frameNum, RowNum*frameHeight, frameWidth, frameHeight))
     if atk == True and face == 1:
         screen.blit(swing,(xpos - swordWidth, ypos + 10), (swordWidth * swordNum, 0, swordWidth, swordHeight))
-    elif face == 1:
-        screen.blit (sword, (xpos + swordWidth - 10, ypos + 10), (swordWidth * swordNum,0, swordWidth, swordHeight))
+    elif atk == False and face == 1:
+        screen.blit (sword, (xpos + swordWidth - 10, ypos + 10), (swordWidth * 0,0, swordWidth, swordHeight))
     if atk == True and face == 0:
         screen.blit(swingr,(xpos + swordWidth - 10, ypos + 10), (swordWidth * swordNum,0, swordWidth, swordHeight))
-    elif face == 0:
-        screen.blit(swordl, (xpos - swordWidth, ypos + 10), (swordWidth * swordNum, 0, swordWidth, swordHeight))
+    elif atk == False and face == 0:
+        screen.blit(swordl, (xpos - swordWidth, ypos + 10), (swordWidth * 0, 0, swordWidth, swordHeight))
     pygame.display.flip()#this actually puts the pixel on the screen
    
 #end game loop------------------------------------------------------------------------------
