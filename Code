@@ -48,6 +48,7 @@ swing = pygame.image.load('sword.png')
 swing.set_colorkey((255,255,255))
 swingr = pygame.image.load('swordleft.png')
 swingr.set_colorkey((255,255,255))
+brian = pygame.image.load('dead.png')
 
 #player variables
 xpos = 500 #xpos of player 1
@@ -164,8 +165,8 @@ while not gameover:
        
     xpos+=vx #update player xpos
     ypos+=vy
-    #xpos2+=vx2
-    #ypos2+=vy2
+    xpos2+=vx2
+    ypos2+=vy2
    
    
     #COLLISION
@@ -282,6 +283,7 @@ while not gameover:
        
 
     screen.blit(mahrio, (xpos, ypos), (frameWidth*frameNum, RowNum*frameHeight, frameWidth, frameHeight))
+    screen.blit(brian, (xpos2, ypos2))
     if atk == True and face == 1:
         screen.blit(swing,(xpos - swordWidth, ypos + 10), (swordWidth * swordNum, 0, swordWidth, swordHeight))
     elif atk == False and face == 1:
