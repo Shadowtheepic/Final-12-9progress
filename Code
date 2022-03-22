@@ -1,6 +1,6 @@
 import pygame
 pygame.init()  
-pygame.display.set_caption("sprite sheet")  # sets the window title
+pygame.display.set_caption("Snackin on deez percs")  # sets the window title
 screen = pygame.display.set_mode((800, 800))  # creates game screen
 bg = pygame.image.load('bg.png')
 clock = pygame.time.Clock() #set up clock
@@ -83,6 +83,12 @@ ticker2 = 0
 direction = DOWN
 direction = S
 
+
+#SOUND
+jump = pygame.mixer.Sound('bruh.wav')
+music = pygame.mixer.music.load('zeldas_lullaby.wav')
+pygame.mixer.music.play(-1)
+
 while not gameover:
     clock.tick(60) #FPS
    
@@ -100,8 +106,10 @@ while not gameover:
                 face = 0
             elif event.key == pygame.K_UP:
                 keys[UP]=True
+                 
             elif event.key == pygame.K_SPACE:
                 keys[DOWN] = True
+                
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT:
                 keys[LEFT]=False
@@ -133,9 +141,11 @@ while not gameover:
         RowNum = 8
         isOnGround = False
         direction = UP
+        pygame.mixer.Sound.play(jump)
 
     if keys[DOWN] == True:
         atk = True
+        vy -= 1
     else:
         atk = False
    
@@ -296,3 +306,4 @@ while not gameover:
    
 #end game loop------------------------------------------------------------------------------
 pygame.quit()
+
